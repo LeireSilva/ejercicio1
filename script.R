@@ -15,3 +15,7 @@ str(df)
 pedidos_diferentes<-length(unique(df$Invoice))
 
 precio_medio<- df %>% group_by(Invoice) %>% summarise(media=mean(n()))
+
+media_producto<-df %>% group_by(Invoice) %>% summarise(total=sum(Quantity))
+
+precio_por_pedido<-df %>% group_by(Invoice) %>% summarise(precio_total=sum(Price))
