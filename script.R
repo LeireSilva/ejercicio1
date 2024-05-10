@@ -1,4 +1,5 @@
 library(readxl)
+library(dplyr)
 df<-read_excel("Datos/online_retail_II.xlsx")
 df$Invoice<-as.factor(df$Invoice)
 df$StockCode<-as.factor(df$StockCode)
@@ -12,3 +13,5 @@ length(df)
 str(df) 
 
 pedidos_diferentes<-length(unique(df$Invoice))
+
+precio_medio<- df %>% group_by(Invoice) %>% summarise(media=mean(n()))
